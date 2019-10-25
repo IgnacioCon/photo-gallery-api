@@ -1,8 +1,9 @@
-import express from 'express'; //framework for nodejs
+import express, { Application } from 'express'; //framework for nodejs
 import morgan from 'morgan'; //module to view requests in console
 import path from 'path';    //module to resolve path issues
+import cors from 'cors';
 
-const app = express();
+const app: Application = express();
 
 import indexRoutes from './routes/index';  //import our routes file
 
@@ -11,6 +12,7 @@ app.set('port', process.env.PORT || 4000);
 
 //Middlewares
 app.use(morgan('dev'));
+app.use(cors());
 app.use(express.json());
 
 //Routes
